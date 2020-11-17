@@ -230,13 +230,13 @@ if (1) {
                              sigma_1 = temp_grid$Y[iter_i]) - 
             Spread_Call(S_0_1 = 100 + temp_grid$X[iter_i], 
                         sigma_1 = temp_grid$Y[iter_i],
-                        flag_AV = T, n = 10^5) 
+                        flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.6, .6), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -269,13 +269,13 @@ if (1) {
                              sigma_2 = temp_grid$Y[iter_i]) - 
             Spread_Call(S_0_1 = 100 + temp_grid$X[iter_i], 
                         sigma_2 = temp_grid$Y[iter_i],
-                        flag_AV = T, n = 10^5) 
+                        flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.6, .6), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -308,13 +308,13 @@ if (1) {
                              rho = temp_grid$Y[iter_i]) - 
             Spread_Call(S_0_1 = 100 + temp_grid$X[iter_i], 
                         rho = temp_grid$Y[iter_i],
-                        flag_AV = T, n = 10^5) 
+                        flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.1, .1), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -350,13 +350,13 @@ if (1) {
             Spread_Call(
                 S_0_1 = 100 + temp_grid$X[iter_i], 
                 Strike = temp_grid$X[iter_i] * temp_grid$Y[iter_i],
-                flag_AV = T, n = 10^5) 
+                flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.1, .1), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -390,13 +390,13 @@ if (1) {
             ) - 
             Spread_Call(
                 sigma_1 = temp_grid$X[iter_i], sigma_2 = temp_grid$Y[iter_i],
-                flag_AV = T, n = 10^5) 
+                flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.3, .3), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -430,13 +430,13 @@ if (1) {
             ) - 
             Spread_Call(
                 sigma_1 = temp_grid$X[iter_i], rho = temp_grid$Y[iter_i],
-                flag_AV = T, n = 10^5) 
+                flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.3, .3), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -470,13 +470,13 @@ if (1) {
             ) - 
             Spread_Call(
                 sigma_1 = temp_grid$X[iter_i], Strike = 10 * temp_grid$Y[iter_i],
-                flag_AV = T, n = 10^5) 
+                flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.3, .3), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -490,9 +490,6 @@ if (1) {
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 }
-
-
-
 
 
 # 8 sigma_2 & rho ---------------------------------------------------------
@@ -512,13 +509,13 @@ if (1) {
             ) - 
             Spread_Call(
                 sigma_2 = temp_grid$X[iter_i], rho = temp_grid$Y[iter_i],
-                flag_AV = T, n = 10^5) 
+                flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.3, .3), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -552,7 +549,7 @@ if (1) {
             ) - 
             Spread_Call(
                 sigma_2 = temp_grid$X[iter_i], Strike = 10 * temp_grid$Y[iter_i],
-                flag_AV = T, n = 10^5) 
+                flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
@@ -593,13 +590,13 @@ if (1) {
             ) - 
             Spread_Call(
                 rho = temp_grid$X[iter_i], Strike = 10 * temp_grid$Y[iter_i],
-                flag_AV = T, n = 10^5) 
+                flag_AV = T, n = 10^6) 
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.5, .5), flag_X = T,
+        scale_range = c(-.1, .1), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
