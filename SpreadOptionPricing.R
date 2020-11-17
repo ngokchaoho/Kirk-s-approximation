@@ -1,6 +1,7 @@
 
 
 # Initialization ----------------------------------------------------------
+
 if (1) {
     # 
     setwd('~/Documents/0_ongoing/fe5222_project2/')
@@ -13,6 +14,8 @@ if (1) {
     set.seed(2020)
 }
 
+
+# Spread Call & Kirk's Approximation --------------------------------------
 
 Spread_Call <- function (
     S_0_1 = 100, S_0_2 = 90, sigma_1 = .2, sigma_2 = .2, rho = .4, 
@@ -76,12 +79,31 @@ Spread_Call_Kirk <- function (
 }
 
 if (1) {
-    seq_temp <- (1:1000) %>% sapply(
+    # Histogram example
+    seq_temp <- seq_len(100000) %>% sapply(
         FUN = function(iter_temp){Spread_Call(seed = iter_temp, 
-                                              flag_AV = T, n = 100000)})
-    hist(seq_temp, breaks = 20, probability = T, main = 'MC Hist', xlab = 'Spread Call MC ($)')
+                                              flag_AV = T, n = 100)})
+    hist(seq_temp, breaks = 17, probability = T, main = 'MC Hist', xlab = 'Spread Call MC ($)')
     lines(density(seq_temp, bw = 'SJ'), col = 'red', lwd = 1.5)
     abline(v = Spread_Call_Kirk(), col = 'blue', lwd = 3, lty = 2)
     legend('topright', legend = c('Kirk\'s Approximation' , 'KDE'), 
            col = c('blue', 'red'), lty = c(2, 1), lwd = 2)
 }
+
+
+
+# Grid Comparison for pricing parameters ----------------------------------
+
+if (1) {
+    temp_seq <- paste0('seq_', c('Spot_Diff', 'Strike', 'sigma', 'r', 'mT'))
+    temp_seq %>% print()
+    combn(length(temp_seq), 2)
+    # pricing parameters
+    seq_Spot <- 1:20 * 10
+    seq_Strike <- 1:20 * 10
+    seq_sigma <- 1:20 / 40
+    seq_r <- 1:20 / 200
+    seq_mT <- 1:20 / 10
+}
+
+
