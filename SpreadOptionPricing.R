@@ -17,7 +17,7 @@ if (1) {
 Spread_Call <- function (
     S_0_1 = 100, S_0_2 = 90, sigma_1 = .2, sigma_2 = .2, rho = .4, 
     Strike = 1, rf = .08, mT = 1, 
-    flag_AV = F, n = 1000000, seed = 2020
+    flag_AV = F, n = 10000, seed = 2020
 ) {
     #' Spread Call Monte Carlo Pricing
     #'
@@ -34,6 +34,7 @@ Spread_Call <- function (
     #' @param seed      random seed to reproduce
     #'
     set.seed(seed)
+    # Generate for the terminal only, since the payoff is not path-dependent
     VarCov <- matrix(c(sigma_1^2, rep(rho * sigma_1 * sigma_2, 2), sigma_2^2),
                      nrow = 2, byrow = T)
     if (flag_AV) {
@@ -44,12 +45,12 @@ Spread_Call <- function (
         temp <- MASS::mvrnorm(n = n, 
                               mu = rep(0, 2), Sigma = VarCov)
     }
-    # 
+    # stddev modification is embedded in the above VarCov
     seq_S_T_1 <- S_0_1 * exp(
-        (rf - .5 * sigma_1 ^ 2) * mT + sigma_1 * sqrt(mT) * temp[, 1]
+        (rf - .5 * sigma_1 ^ 2) * mT + sqrt(mT) * temp[, 1] # * sigma_1
     )
     seq_S_T_2 <- S_0_2 * exp(
-        (rf - .5 * sigma_2 ^ 2) * mT + sigma_2 * sqrt(mT) * temp[, 2]
+        (rf - .5 * sigma_2 ^ 2) * mT + sqrt(mT) * temp[, 2] # * sigma_1
     )
     # 
     seq_Payoff <- pmax(seq_S_T_1 - seq_S_T_2 - Strike, 0)
@@ -74,9 +75,13 @@ Spread_Call_Kirk <- function (
     return(Value)
 }
 
-
-Spread_Call_Kirk()
-fExoticOptions::SpreadApproxOption(TypeFlag = 'c', S1 = 100, S2 = 90, X = 1, 
-                                   Time = 1, r = .08, sigma1 = .2, sigma2 = .2, rho = .4)
-Spread_Call(n = 10000)
-
+if (1) {
+    seq_temp <- (1:1000) %>% sapply(
+        FUN = function(iter_temp){Spread_Call(seed = iter_temp, 
+                                              flag_AV = T, n = 100000)})
+    hist(seq_temp, breaks = 20, probability = T, main = 'MC Hist', xlab = 'Spread Call MC ($)')
+    lines(density(seq_temp, bw = 'SJ'), col = 'red', lwd = 1.5)
+    abline(v = Spread_Call_Kirk(), col = 'blue', lwd = 3, lty = 2)
+    legend('topright', legend = c('Kirk\'s Approximation' , 'KDE'), 
+           col = c('blue', 'red'), lty = c(2, 1), lwd = 2)
+}
