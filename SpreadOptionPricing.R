@@ -53,7 +53,7 @@ Spread_Call <- function (
         (rf - .5 * sigma_1 ^ 2) * mT + sqrt(mT) * temp[, 1] # * sigma_1
     )
     seq_S_T_2 <- S_0_2 * exp(
-        (rf - .5 * sigma_2 ^ 2) * mT + sqrt(mT) * temp[, 2] # * sigma_1
+        (rf - .5 * sigma_2 ^ 2) * mT + sqrt(mT) * temp[, 2] # * sigma_2
     )
     # 
     seq_Payoff <- pmax(seq_S_T_1 - seq_S_T_2 - Strike, 0)
