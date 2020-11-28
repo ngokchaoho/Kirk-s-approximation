@@ -6,9 +6,9 @@ if (1) {
     # 
     setwd('~/Documents/0_ongoing/fe5222_project2/')
     # 
-    library(plyr)
+    # library(plyr)
     library(tidyverse)
-    library(doParallel)
+    # library(doParallel)
     library(ggplot2)
     # 
     set.seed(2020)
