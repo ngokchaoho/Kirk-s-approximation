@@ -152,19 +152,30 @@ ContourPlots <- function(
     # ggplot2::theme_bw()
     if (flag_X) {
         temp_seq_X <- seq_X[seq(from = 1, to = length(seq_X), by = 2)]
-        temp_p <- temp_p + 
-            ggplot2::scale_x_continuous(
-                breaks = (temp_seq_X - min(temp_seq_X))/(max(temp_seq_X) - min(temp_seq_X)),
-                labels = temp_seq_X) + 
-            ggplot2::scale_y_continuous(
-                breaks = (seq_Y - min(seq_Y))/(max(seq_Y) - min(seq_Y)), labels = seq_Y)
+        seq_X <- temp_seq_X
+    }
+    if (str_detect(string = xlab, pattern = 'Percentage')) {
+        temp_p <- temp_p + ggplot2::scale_x_continuous(
+            breaks = (seq_X - min(seq_X))/(max(seq_X) - min(seq_X)),
+            labels = scales::percent(seq_X)
+        )
     } else {
         temp_p <- temp_p + 
             ggplot2::scale_x_continuous(
                 breaks = (seq_X - min(seq_X))/(max(seq_X) - min(seq_X)), 
-                labels = seq_X) + 
-            ggplot2::scale_y_continuous(
-                breaks = (seq_Y - min(seq_Y))/(max(seq_Y) - min(seq_Y)), labels = seq_Y)
+                labels = seq_X
+            )
+    }
+    if (str_detect(string = ylab, pattern = 'Percentage')) {
+        temp_p <- temp_p + ggplot2::scale_y_continuous(
+            breaks = (seq_Y - min(seq_Y))/(max(seq_Y) - min(seq_Y)),
+            labels = scales::percent(seq_Y)
+        )
+    } else {
+        temp_p <- temp_p + ggplot2::scale_y_continuous(
+            breaks = (seq_Y - min(seq_Y))/(max(seq_Y) - min(seq_Y)), 
+            labels = seq_Y
+        )
     }
     
     if (is.null(scale_range)) {
@@ -204,6 +215,7 @@ ContourPlots <- function(
         # )
     }
     
+    
     if (flag_save_plot) {
         cat('Saving', paste0(save_folder, fig_title, '.png'), '...\n')
         ggplot2::ggsave(filename = paste0(save_folder, fig_title, '.png'), plot = temp_p)
@@ -236,7 +248,7 @@ if (1) {
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.6, .6), flag_X = T,
+        scale_range = c(-.65, .65), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -275,7 +287,7 @@ if (1) {
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.6, .6), flag_X = T,
+        scale_range = c(-.65, .65), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -314,7 +326,7 @@ if (1) {
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.1, .1), flag_X = T,
+        scale_range = c(-.3, .3), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -356,7 +368,7 @@ if (1) {
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.1, .1), flag_X = T,
+        scale_range = c(-.3, .3), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -555,7 +567,7 @@ if (1) {
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.7, .7), flag_X = T,
+        scale_range = c(-.65, .65), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
@@ -596,7 +608,7 @@ if (1) {
     p <- ContourPlots(
         temp_grid, 
         fig_subtitle = 'Differences between Kirk & MC for Spread Call',
-        scale_range = c(-.1, .1), flag_X = T,
+        scale_range = c(-.3, .3), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
