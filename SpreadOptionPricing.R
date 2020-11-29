@@ -278,7 +278,7 @@ if (1) {
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     {
-        svg('plots/Hist_sigma.svg')
+        svg('plots/Modified sigma Hist.svg')
         temp_grid$Z %>% psych::describe() %>% print(digits = 2)
         # temp_grid$Z %>% hist(breaks = 20, freq = F, main = 'Value Diff Histogram (Kirk\'s - MC, in $)')
         temp_grid$Z %>% hist(breaks = 20, freq = F, 
