@@ -264,7 +264,7 @@ if (1) {
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
-        xlab = 'sigma_2', ylab = 'sigma_2',
+        xlab = 'sigma_1', ylab = 'sigma_2',
         fig_title = 'Modified sigma'
         # fig_title = paste0('sigma_1', ' & ', 'sigma_2')
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
