@@ -226,6 +226,68 @@ ContourPlots <- function(
 }
 
 
+
+# Modified sigma ----------------------------------------------------------
+
+if (1) {
+    
+    sigma <- function(sigma_1 = .2, sigma_2 = .2) {
+        Spot_2 <- 100
+        Strike <- 5
+        rf <- 0.08
+        mT <- 1
+        rho <- 0.4
+        sqrt(
+            sigma_1^2 + sigma_2^2 * (
+                Spot_2/(Spot_2 + Strike * exp(- rf * mT))
+            )^2 - 2 * rho * sigma_1 * sigma_2 * (Spot_2/(Spot_2 + Strike * exp(- rf * mT)))
+        )
+    }
+    
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    tictoc::tic()
+    set.seed(2020)
+    # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
+    temp_grid <- cbind(expand.grid(seq_sigma_1, seq_sigma_2), NA)
+    # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
+    colnames(temp_grid) <- c('X', 'Y', 'Z')
+    for (iter_i in 1:nrow(temp_grid)) {
+        temp_grid$Z[iter_i] <- 
+            # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
+            sigma(sigma_1 = temp_grid$X[iter_i], sigma_2 = temp_grid$Y[iter_i])
+        # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
+    }
+    p <- ContourPlots(
+        temp_grid, 
+        fig_subtitle = 'Modified sigma, from sigma_1 and sigma_2',
+        scale_range = c(0, 1.5), flag_X = T,
+        flag_plot = F, flag_save_plot = T, 
+        save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
+        # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
+        xlab = 'sigma_2', ylab = 'sigma_2',
+        fig_title = 'Modified sigma'
+        # fig_title = paste0('sigma_1', ' & ', 'sigma_2')
+        # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
+    )
+    print(p)
+    print(range(temp_grid$Z))
+    tictoc::toc()
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/Hist_sigma.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        # temp_grid$Z %>% hist(breaks = 20, freq = F, main = 'Value Diff Histogram (Kirk\'s - MC, in $)')
+        temp_grid$Z %>% hist(breaks = 20, freq = F, 
+                             xlab = 'Modified sigma', main = 'Histogram of the modified sigma')
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
+    
+}
+
+
+
 # 1 SpotDiff & sigma_1 ----------------------------------------------------
 if (1) {
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
