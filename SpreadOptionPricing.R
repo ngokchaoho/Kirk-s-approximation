@@ -231,12 +231,11 @@ ContourPlots <- function(
 
 if (1) {
     
-    sigma <- function(sigma_1 = .2, sigma_2 = .2) {
+    sigma <- function(sigma_1 = .2, sigma_2 = .2, rho = .4) {
         Spot_2 <- 100
         Strike <- 5
         rf <- 0.08
         mT <- 1
-        rho <- 0.4
         sqrt(
             sigma_1^2 + sigma_2^2 * (
                 Spot_2/(Spot_2 + Strike * exp(- rf * mT))
@@ -254,18 +253,22 @@ if (1) {
     for (iter_i in 1:nrow(temp_grid)) {
         temp_grid$Z[iter_i] <- 
             # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
-            sigma(sigma_1 = temp_grid$X[iter_i], sigma_2 = temp_grid$Y[iter_i])
+            sigma(
+                sigma_1 = temp_grid$X[iter_i], sigma_2 = temp_grid$Y[iter_i], 
+                rho = .4
+            )
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     }
     p <- ContourPlots(
         temp_grid, 
-        fig_subtitle = 'Modified sigma, from sigma_1 and sigma_2',
-        scale_range = c(0, 1.5), flag_X = T,
+        scale_range = c(0, 1.7), flag_X = T,
         flag_plot = F, flag_save_plot = T, 
         save_folder = '~/Documents/0_ongoing/fe5222_project2/plots/',
         # v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v 
         xlab = 'sigma_1', ylab = 'sigma_2',
-        fig_title = 'Modified sigma'
+        fig_title = 'Modified sigma',
+        fig_subtitle = 'with rho = 0.4, Spot_2 = $100, Strike = $5, rf = 0.08, mT = 1',
+        fill_label = 'Modified\nSigma'
         # fig_title = paste0('sigma_1', ' & ', 'sigma_2')
         # ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
     )
