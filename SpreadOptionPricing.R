@@ -323,6 +323,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/Spot Diff & sigma_1 Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'Spot Diff & sigma_1'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -362,6 +372,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/Spot Diff & sigma_2 Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'Spot Diff & sigma_2'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -401,6 +421,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/Spot Diff & rho Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'Spot Diff & rho'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -443,6 +473,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/Spot Diff & Strike Percent Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'Spot Diff & Strike Percent'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -483,6 +523,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/sigma_1 & sigma_2 Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'sigma_1 & sigma_2'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -523,6 +573,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/sigma_1 & rho Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'sigma_1 & rho'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -563,6 +623,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/sigma_1 & Strike Percent Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'sigma_1 & Strike Percent'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -602,6 +672,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/sigma_2 & rho Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'sigma_2 & rho'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -642,6 +722,16 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/sigma_2 & Strike Percent Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'sigma_2 & Strike Percent'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
 
 
@@ -683,4 +773,14 @@ if (1) {
     tictoc::toc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    {
+        svg('plots/rho & Strike Percent Hist.svg')
+        temp_grid$Z %>% psych::describe() %>% print(digits = 2)
+        temp_grid$Z %>% hist(
+            breaks = 20, freq = F, xlab = 'Value Diff (Kirk\'s - MC, in $)',
+            main = 'rho & Strike Percent'
+        )
+        temp_grid$Z %>% density(bw = 'SJ') %>% lines(col = 'red')
+        dev.off()
+    }
 }
