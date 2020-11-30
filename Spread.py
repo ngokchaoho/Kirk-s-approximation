@@ -27,19 +27,15 @@ class Spread(object):
 
     @property
     def price_mc(self):
-        prices1 = np.zeros(self.paths, dtype=np.float64)
-        prices1[:] = self.S1
-        prices2 = np.zeros(self.paths, dtype=np.float64)
-        prices2[:] = self.S2
-        for t in range(0, self.steps-1):
-            np.random.seed()
-            z1 =np.random.standard_normal(self.paths)
-            z2 =np.random.standard_normal(self.paths)
-            dt = self.T/self.steps
-            dw1 = np.sqrt(dt)*z1
-            dw2 = np.sqrt(dt)*z2
-            prices1[:] = prices1[:] * np.exp((self.r -0.5*self.sigma1**2)*dt + self.sigma1*dw1)
-            prices2[:] = prices2[:] * np.exp((self.r-0.5*self.sigma2**2)*dt + self.sigma2*(self.rho*dw1+np.sqrt(1-self.rho**2)*dw2))
+        np.random.seed()
+        z1 =np.random.standard_normal(int(self.paths/2))
+        Z1 = np.concatenate((z1, -z1))
+        z2 =np.random.standard_normal(int(self.paths/2))
+        Z2 = np.concatenate((z2, -z2))
+        w1 = np.sqrt(self.T)*Z1
+        w2 = np.sqrt(self.T)*Z2
+        prices1 = self.S1 * np.exp((self.r -0.5*self.sigma1**2)*self.T + self.sigma1*w1)
+        prices2 = self.S2 * np.exp((self.r-0.5*self.sigma2**2)*self.T + self.sigma2*(self.rho*w1+np.sqrt(1-self.rho**2)*w2))
         return prices1, prices2
 
 
