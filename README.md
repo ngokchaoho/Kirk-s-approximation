@@ -1,4 +1,4 @@
-# FE5222 Project Two
+# Kirk's approximation
 November 6, 2020
 ## 1 Requirements
 Each group is required to submit a nal report together with source code for your project, stating in details
